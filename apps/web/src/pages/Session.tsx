@@ -141,7 +141,11 @@ export function SessionPage() {
     setError("");
     setTranscript("");
     if (!recordingSupported()) {
-      setError("Voice answers are not supported in this browser.");
+      setError(
+        window.isSecureContext
+          ? "Voice answers are not supported in this browser."
+          : "Voice answers need a secure (HTTPS) connection. Open the app over HTTPS and try again.",
+      );
       return;
     }
     try {
