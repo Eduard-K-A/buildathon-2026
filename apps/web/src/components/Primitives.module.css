@@ -1,0 +1,183 @@
+.screen {
+  min-height: 100dvh;
+  background: var(--backdrop);
+  display: flex;
+  justify-content: center;
+}
+
+.phone {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 52px var(--x6) 0;
+}
+
+.footer {
+  position: sticky;
+  bottom: 0;
+  border-top: 1px solid var(--rule);
+  padding: var(--x3) var(--x6) var(--x6);
+  background: var(--paper);
+}
+
+@media (min-width: 768px) {
+  .phone {
+    max-width: 640px;
+    border-inline: 1px solid var(--rule);
+  }
+
+  .content {
+    padding-top: 64px;
+  }
+}
+
+@media (min-width: 1100px) {
+  .phone {
+    max-width: 720px;
+  }
+}
+
+.header {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: var(--x3);
+  margin-bottom: var(--x3);
+}
+
+.iconButton {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  font-size: 30px;
+  line-height: 32px;
+}
+
+.iconButton:hover {
+  background: var(--input-bg);
+}
+
+.headerTitle {
+  flex: 1;
+  color: var(--ink);
+}
+
+.headerAction {
+  min-width: 44px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--card-rule, var(--rule));
+  border-radius: var(--r-tight);
+  padding: var(--x4);
+}
+
+.button {
+  min-height: 48px;
+  border-radius: var(--r-tight);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--x4);
+  font-family: var(--sans);
+  font-size: var(--fs-button);
+  font-weight: 600;
+  transition: background-color 120ms ease;
+}
+
+.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.primary:hover:not(:disabled) {
+  background: #2a2926;
+}
+
+.primary:active:not(:disabled) {
+  background: var(--pressed);
+}
+
+.secondary {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  color: var(--ink);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--input-bg);
+}
+
+.tertiary {
+  background: transparent;
+  color: var(--ink);
+}
+
+.tertiary:hover:not(:disabled) {
+  background: var(--fill-subtle);
+}
+
+.button:disabled {
+  background: var(--disabled);
+  border-color: var(--disabled);
+  color: var(--disabled-text);
+}
+
+.caption {
+  color: var(--ink-soft);
+}
+
+.chip {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--x2);
+  border-radius: var(--r-pill);
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  padding-left: var(--x3);
+  padding-right: var(--x2);
+}
+
+.chipNoRemove {
+  padding-right: var(--x3);
+}
+
+.chipText {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.chipRemove {
+  width: 22px;
+  height: 22px;
+  border-radius: var(--r-pill);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fill-subtle);
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 18px;
+}

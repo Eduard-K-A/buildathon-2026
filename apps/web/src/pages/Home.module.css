@@ -1,0 +1,156 @@
+.settingsButton {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.settingsButton:hover {
+  background: var(--input-bg);
+}
+
+.hero {
+  display: flex;
+  gap: var(--x4);
+  align-items: center;
+  margin-bottom: var(--x6);
+}
+
+.heroBody {
+  flex: 1;
+}
+
+.subtitle {
+  color: var(--ink);
+}
+
+.heroCopy {
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 4px;
+}
+
+.tabs {
+  display: flex;
+  border-bottom: 1px solid var(--rule);
+  margin: calc(-1 * var(--x4)) calc(-1 * var(--x4)) var(--x4);
+}
+
+.tab {
+  flex: 1;
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.tabActive {
+  border-bottom-color: var(--ember);
+  color: var(--ink);
+}
+
+.dropzone {
+  width: 100%;
+  min-height: 160px;
+  border: 1.5px dashed var(--rule);
+  border-radius: var(--r-tight);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--x2);
+  background: var(--input-bg);
+  text-align: center;
+}
+
+.dropzoneFilled {
+  border-style: solid;
+  background: var(--surface);
+}
+
+.dropzoneDragging {
+  border-color: var(--ember);
+  background: var(--fill-subtle);
+}
+
+@media (min-width: 768px) {
+  .dropzone {
+    min-height: 220px;
+  }
+}
+
+.fileIcon {
+  color: var(--ink-soft);
+  font-size: 34px;
+}
+
+.dropTitle {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 160px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tight);
+  background: var(--input-bg);
+  color: var(--ink);
+  padding: var(--x4);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 25px;
+  font-weight: 500;
+  resize: vertical;
+}
+
+.textarea::placeholder {
+  color: var(--ink-soft);
+}
+
+@media (min-width: 768px) {
+  .textarea {
+    min-height: 220px;
+  }
+}
+
+.error {
+  color: var(--flag);
+  font-size: 13px;
+  line-height: 18px;
+  margin-top: var(--x3);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.privacy {
+  border-top: 1px solid var(--rule);
+  margin-top: var(--x8);
+  padding-top: var(--x4);
+  padding-bottom: var(--x6);
+}
+
+.privacyText {
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.hiddenInput {
+  display: none;
+}

@@ -1,0 +1,51 @@
+.label {
+  display: block;
+  color: var(--ink-soft);
+  margin-top: var(--x6);
+  margin-bottom: var(--x3);
+}
+
+.empty {
+  color: var(--flag);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--x2);
+  min-height: 40px;
+}
+
+.segment {
+  display: flex;
+  gap: var(--x2);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  padding: 4px;
+  max-width: 320px;
+}
+
+.countButton {
+  flex: 1;
+  min-height: 42px;
+}
+
+.countActive {
+  border-bottom: 2px solid var(--ember);
+}
+
+.note {
+  color: var(--ink-soft);
+  font-size: 13px;
+  margin-top: var(--x3);
+}
+
+.error {
+  color: var(--flag);
+  font-size: 13px;
+  line-height: 18px;
+  margin-top: var(--x3);
+}

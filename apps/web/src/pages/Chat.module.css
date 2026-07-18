@@ -1,0 +1,84 @@
+.intro {
+  display: flex;
+  align-items: center;
+  gap: var(--x3);
+  margin-bottom: var(--x4);
+}
+
+.introText {
+  flex: 1;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.messages {
+  flex: 1;
+  padding-bottom: var(--x6);
+}
+
+.bubbleRow {
+  display: flex;
+  margin-bottom: var(--x3);
+}
+
+.bubbleRowMine {
+  justify-content: flex-end;
+}
+
+.bubble {
+  max-width: 82%;
+  border-radius: 14px;
+  padding: var(--x3);
+  font-size: 14px;
+  line-height: 20px;
+  white-space: pre-wrap;
+}
+
+@media (min-width: 768px) {
+  .bubble {
+    max-width: 75%;
+  }
+}
+
+.mine {
+  background: var(--ink);
+  color: var(--paper);
+  border-bottom-right-radius: 4px;
+}
+
+.gabi {
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-bottom-left-radius: 4px;
+}
+
+.composer {
+  display: flex;
+  gap: var(--x2);
+}
+
+.input {
+  flex: 1;
+  min-height: 48px;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tight);
+  background: var(--surface);
+  padding: 0 var(--x3);
+  color: var(--ink);
+}
+
+.input::placeholder {
+  color: var(--ink-soft);
+}
+
+.send {
+  width: 82px;
+}
+
+.error {
+  color: var(--flag);
+  font-size: 13px;
+  line-height: 18px;
+}

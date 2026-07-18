@@ -1,0 +1,70 @@
+:root {
+  /* core palette (mobile src/design/tokens.ts) */
+  --paper: #faf7f2;
+  --ink: #1c1b19;
+  --ink-soft: #56524a;
+  --rule: #e4dfd3;
+  --ember: #c2491d;
+  --moss: #3f6b4f;
+  --flag: #9a3b3b;
+  --surface: #ffffff;
+
+  /* ad-hoc colors used across mobile screens */
+  --input-bg: #fcfaf6;
+  --fill-subtle: #f3efe7;
+  --divider: #f0ece3;
+  --correct-bg: #f1f6f2;
+  --wrong-bg: #f8f1f1;
+  --tone-bg: #f3e7e7;
+  --pressed: #171613;
+  --disabled: #ede8df;
+  --disabled-text: #a8a296;
+  --backdrop: #e9e5dd;
+  --toggle-off: #d8d2c4;
+  --scrim: rgba(28, 27, 25, 0.18);
+
+  /* spacing */
+  --x1: 4px;
+  --x2: 8px;
+  --x3: 12px;
+  --x4: 16px;
+  --x6: 24px;
+  --x8: 32px;
+  --x12: 48px;
+
+  /* radius */
+  --r-tight: 6px;
+  --r-pill: 100px;
+
+  /* fonts */
+  --serif: Georgia, "Times New Roman", serif;
+  --sans: "Inter", -apple-system, "Segoe UI", system-ui, sans-serif;
+
+  /* type scale (base = mobile values) */
+  --fs-title: 22px;
+  --lh-title: 30px;
+  --fs-question: 21px;
+  --lh-question: 32px;
+  --fs-score: 44px;
+  --lh-score: 52px;
+  --fs-section: 15px;
+  --lh-section: 22px;
+  --fs-body: 16px;
+  --lh-body: 24px;
+  --fs-caption: 13px;
+  --lh-caption: 18px;
+  --fs-button: 15px;
+
+  --shadow-sheet: 0 -2px 16px rgba(28, 27, 25, 0.08);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --fs-title: 24px;
+    --lh-title: 32px;
+    --fs-question: 23px;
+    --lh-question: 34px;
+    --fs-score: 52px;
+    --lh-score: 60px;
+  }
+}

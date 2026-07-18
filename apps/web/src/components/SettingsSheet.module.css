@@ -1,0 +1,169 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background: var(--scrim);
+  cursor: default;
+}
+
+.sheet {
+  position: relative;
+  background: var(--paper);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  padding: var(--x6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--x4);
+  box-shadow: var(--shadow-sheet);
+  animation: slideUp 220ms ease;
+  max-height: 90dvh;
+  overflow-y: auto;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .overlay {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .sheet {
+    width: 380px;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    border-left: 1px solid var(--rule);
+    box-shadow: -2px 0 16px rgba(28, 27, 25, 0.08);
+    animation: slideIn 220ms ease;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(24px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .handle {
+    display: none;
+  }
+}
+
+.handle {
+  align-self: center;
+  width: 42px;
+  height: 4px;
+  border-radius: var(--r-pill);
+  background: var(--rule);
+}
+
+.title {
+  color: var(--ink);
+}
+
+.row {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  gap: var(--x4);
+}
+
+.rowBody {
+  flex: 1;
+}
+
+.rowTitle {
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.rowDetail {
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 18px;
+  margin-top: 2px;
+}
+
+.toggle {
+  position: relative;
+  width: 46px;
+  height: 27px;
+  flex-shrink: 0;
+  border-radius: var(--r-pill);
+  background: var(--toggle-off);
+  transition: background-color 150ms ease;
+}
+
+.toggleOn {
+  background: var(--ember);
+}
+
+.knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 21px;
+  height: 21px;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  transition: left 150ms ease;
+}
+
+.knobOn {
+  left: 22px;
+}
+
+.segmentBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--x2);
+}
+
+.segment {
+  display: flex;
+  border: 1px solid var(--rule);
+  border-radius: var(--r-tight);
+  background: var(--surface);
+  padding: 4px;
+}
+
+.segmentItem {
+  flex: 1;
+  min-height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid transparent;
+  color: var(--ink-soft);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.segmentActive {
+  border-bottom-color: var(--ember);
+  color: var(--ink);
+}

@@ -1,0 +1,83 @@
+.body {
+  padding-bottom: var(--x6);
+}
+
+.scoreCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--x3);
+}
+
+@media (min-width: 768px) {
+  .scoreCard {
+    max-width: 480px;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+.score {
+  font-family: var(--serif);
+  color: var(--ink);
+  font-size: var(--fs-score);
+  line-height: var(--lh-score);
+  font-weight: 600;
+}
+
+.encouragement {
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 22px;
+  text-align: center;
+}
+
+.sectionTitle {
+  color: var(--ink);
+  margin-top: var(--x6);
+  margin-bottom: var(--x3);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--x2);
+}
+
+.weakList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--x3);
+}
+
+@media (min-width: 768px) {
+  .weakList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: start;
+  }
+}
+
+.weakTitle {
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.weakReason {
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 19px;
+  margin-top: 3px;
+}
+
+.sourceRef {
+  color: var(--flag);
+  font-size: 12px;
+  margin-top: var(--x2);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+}

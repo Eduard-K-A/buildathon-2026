@@ -1,0 +1,18 @@
+{
+  "name": "gabai-web",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:web": "npm --workspace @gabai/web run dev",
+    "dev:server": "npm --workspace @gabai/server run dev",
+    "build:web": "npm --workspace @gabai/web run build",
+    "typecheck": "npm --workspaces --if-present run typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
