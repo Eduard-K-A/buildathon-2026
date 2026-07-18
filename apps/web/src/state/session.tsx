@@ -1,4 +1,4 @@
-import type { DocumentAnalysis, ExerciseType, PracticeQuestion, SessionSummary, ToneState } from "@gabai/shared";
+import type { Difficulty, DocumentAnalysis, ExerciseType, PracticeQuestion, SessionSummary, ToneState } from "@gabai/shared";
 import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
 type Settings = {
@@ -18,6 +18,22 @@ type Result = {
   detected_tone?: ToneState;
 };
 
+export type Customizer = {
+  enabled: boolean;
+  focusTopics: string[];
+  difficulty: Difficulty | null;
+  typeMix: Partial<Record<ExerciseType, number>> | null;
+  instructions: string;
+};
+
+const defaultCustomizer: Customizer = {
+  enabled: false,
+  focusTopics: [],
+  difficulty: null,
+  typeMix: null,
+  instructions: "",
+};
+
 type SessionContextValue = {
   sourceId: string | null;
   sourcePreview: string;
@@ -26,6 +42,7 @@ type SessionContextValue = {
   summary: SessionSummary | null;
   selectedTypes: ExerciseType[];
   questionCount: number;
+  customizer: Customizer;
   results: Result[];
   settings: Settings;
   setSource: (sourceId: string, preview: string) => void;
@@ -35,6 +52,7 @@ type SessionContextValue = {
   setSelectedTypes: (types: ExerciseType[]) => void;
   toggleType: (type: ExerciseType) => void;
   setQuestionCount: (count: number) => void;
+  updateCustomizer: (patch: Partial<Customizer>) => void;
   resetSession: () => void;
   addResult: (result: Result) => void;
   updateSettings: (settings: Partial<Settings>) => void;
@@ -69,6 +87,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
   const [summary, setSummary] = useState<SessionSummary | null>(null);
   const [selectedTypes, setSelectedTypes] = useState<ExerciseType[]>([]);
   const [questionCount, setQuestionCount] = useState(10);
+  const [customizer, setCustomizer] = useState<Customizer>(defaultCustomizer);
   const [results, setResults] = useState<Result[]>([]);
   const [settings, setSettings] = useState(loadSettings);
 
@@ -81,6 +100,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
       summary,
       selectedTypes,
       questionCount,
+      customizer,
       results,
       settings,
       setSource: (nextSourceId, preview) => {
@@ -90,6 +110,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setQuestions([]);
         setSummary(null);
         setResults([]);
+        setCustomizer(defaultCustomizer);
       },
       setAnalysis,
       setQuestions,
@@ -99,6 +120,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setSelectedTypes((current) => (current.includes(type) ? current.filter((item) => item !== type) : [...current, type]));
       },
       setQuestionCount,
+      updateCustomizer: (patch) => setCustomizer((current) => ({ ...current, ...patch })),
       resetSession: () => {
         setSourceId(null);
         setSourcePreview("");
@@ -107,6 +129,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         setSummary(null);
         setSelectedTypes([]);
         setQuestionCount(10);
+        setCustomizer(defaultCustomizer);
         setResults([]);
       },
       addResult: (result) => setResults((current) => [...current, result]),
@@ -122,7 +145,7 @@ export function SessionProvider({ children }: { children: ReactNode }) {
         });
       },
     }),
-    [sourceId, sourcePreview, analysis, questions, summary, selectedTypes, questionCount, results, settings],
+    [sourceId, sourcePreview, analysis, questions, summary, selectedTypes, questionCount, customizer, results, settings],
   );
 
   return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;

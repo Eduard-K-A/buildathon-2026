@@ -7,6 +7,8 @@ export const exerciseTypeSchema = z.enum([
   "short_answer",
 ]);
 
+export const difficultySchema = z.enum(["easy", "medium", "hard"]);
+
 export const languageModeSchema = z.enum(["english", "filipino", "taglish"]);
 export const languagePreferenceSchema = z.enum(["auto", "english", "filipino", "taglish"]);
 export const toneStateSchema = z.enum(["confident", "neutral", "confused", "frustrated"]);
@@ -16,6 +18,7 @@ export const documentAnalysisSchema = z.object({
   detected_topic: z.string(),
   detected_grade_level: z.string(),
   dominant_language: languageModeSchema,
+  key_topics: z.array(z.string()).min(3).max(8),
   suggested_exercise_types: z
     .array(z.object({ type: exerciseTypeSchema, reason: z.string() }))
     .min(2)
@@ -81,10 +84,29 @@ export const textSourceRequestSchema = z.object({
   text: z.string().trim().min(1).max(80_000),
 });
 
+export const customReviewerSchema = z
+  .object({
+    focusTopics: z.array(z.string().trim().min(1)).max(8).default([]),
+    difficulty: difficultySchema.optional(),
+    instructions: z.string().trim().max(500).optional(),
+    typeMix: z
+      .array(z.object({ type: exerciseTypeSchema, count: z.number().int().min(1) }))
+      .optional(),
+  })
+  .refine(
+    (custom) => {
+      if (!custom.typeMix) return true;
+      const total = custom.typeMix.reduce((sum, item) => sum + item.count, 0);
+      return total >= 5 && total <= 15;
+    },
+    { message: "Question mix must total between 5 and 15 questions." },
+  );
+
 export const questionRequestSchema = z.object({
   selectedTypes: z.array(exerciseTypeSchema).min(1),
   questionCount: z.number().int().min(5).max(15),
   languagePreference: languagePreferenceSchema.default("auto"),
+  custom: customReviewerSchema.optional(),
 });
 
 export const quickChatRequestSchema = z.object({
@@ -112,6 +134,8 @@ export const summaryRequestSchema = z.object({
 });
 
 export type ExerciseType = z.infer<typeof exerciseTypeSchema>;
+export type Difficulty = z.infer<typeof difficultySchema>;
+export type CustomReviewer = z.infer<typeof customReviewerSchema>;
 export type LanguageMode = z.infer<typeof languageModeSchema>;
 export type LanguagePreference = z.infer<typeof languagePreferenceSchema>;
 export type ToneState = z.infer<typeof toneStateSchema>;

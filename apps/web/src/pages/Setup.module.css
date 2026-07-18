@@ -54,6 +54,83 @@
   border-bottom: 2px solid var(--ember);
 }
 
+.help {
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 18px;
+  margin-bottom: var(--x3);
+}
+
+.customToggle {
+  display: block;
+  margin-top: var(--x6);
+}
+
+.customSection {
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  padding: var(--x3) var(--x4) var(--x4);
+  margin-top: var(--x3);
+}
+
+.mixList {
+  margin-top: var(--x3);
+}
+
+.mixRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--x2) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.mixLabel {
+  font-size: 14px;
+  color: var(--ink);
+  text-transform: capitalize;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--x2);
+}
+
+.stepButton {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.stepValue {
+  min-width: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.instructionsInput {
+  width: 100%;
+  min-height: 72px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  padding: var(--x2) var(--x3);
+  resize: vertical;
+}
+
 .note {
   color: var(--ink-soft);
   font-size: 13px;

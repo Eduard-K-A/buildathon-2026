@@ -4,6 +4,29 @@ GabAI study companion — a responsive Vite + React SPA backed by an Express API
 
 **Live demo:** https://buildathon-2026-web.vercel.app
 
+## Product
+
+GabAI turns any learning material into an interactive review session. A student uploads a PDF or pastes their notes; Gabi (the AI tutor) analyzes the material and builds a practice quiz from it.
+
+**Features**
+
+- **Material analysis** — detects the subject, topic, grade level, language, and key topics, and recommends the best question types for the material.
+- **Custom reviewer** — beyond the recommended setup, students can steer generation: focus topics, difficulty (easy/medium/hard), an exact per-type question mix, and free-text instructions like "focus on dates and definitions".
+- **Socratic tutoring** — wrong answers get guided hints instead of instant answers; Gabi detects the student's tone (confident, confused, frustrated) and adapts its feedback.
+- **Voice-first studying** — answer by speaking (Whisper speech-to-text) and have questions and feedback read aloud, enabling hands-free review.
+- **Multilingual** — works in English, Filipino, or natural Taglish, matching the student's language automatically.
+- **Session summary** — a score, topics covered, and weak areas with pointers back to the source material, plus an encouragement message.
+
+**Why it helps students learn**
+
+Rereading notes is passive; GabAI converts the same notes into active recall practice — the most reliable way to retain material — in under a minute, with zero quiz-writing effort. Socratic hints keep students reasoning instead of memorizing answers, difficulty and focus-topic controls let them drill exactly where they're weak, and the end-of-session weak-area report tells them what to study next. Voice input and Filipino/Taglish support lower the barrier for students who study better by talking or in their own language.
+
+## System overview
+
+- The **web app** (`apps/web`) handles the study flow: source upload → analysis → reviewer setup (with optional customization) → practice session → summary. Session state lives in a React context.
+- The **API server** (`apps/server`) exposes routes for documents, question generation, tutor turns, speech-to-text, and summaries. All AI calls go through a provider abstraction (`src/providers/`) so models can be swapped without touching services.
+- **Shared Zod schemas** (`packages/shared`) define every request/response contract and are enforced on model outputs via strict JSON-schema structured outputs — the client, server, and model all agree on shapes at compile time and runtime.
+
 ## Structure
 
 - `apps/web` — Vite + React 19 + React Router frontend (`@gabai/web`)

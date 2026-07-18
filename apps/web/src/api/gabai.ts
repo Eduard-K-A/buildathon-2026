@@ -1,4 +1,5 @@
 import type {
+  CustomReviewer,
   DocumentAnalysis,
   ExerciseType,
   LanguageMode,
@@ -51,11 +52,13 @@ export async function generateQuestions(
   selectedTypes: ExerciseType[],
   questionCount: number,
   languagePreference: LanguagePreference,
+  custom?: CustomReviewer,
 ) {
   return apiPost<{ questions: PracticeQuestion[] }>(`/api/source/${sourceId}/questions`, {
     selectedTypes,
     questionCount,
     languagePreference,
+    ...(custom ? { custom } : {}),
   });
 }
 
