@@ -15,10 +15,10 @@ export class GroqProvider implements AIProvider, STTProvider {
 
   async isAvailable(): Promise<boolean> {
     return Boolean(
-      this.env.GROQ_API_KEY &&
-        this.env.GROQ_MODEL_PRIMARY &&
-        this.env.GROQ_MODEL_FAST &&
-        this.env.GROQ_STT_MODEL,
+      this.env.OPENAI_API_KEY &&
+        this.env.OPENAI_MODEL_PRIMARY &&
+        this.env.OPENAI_MODEL_FAST &&
+        this.env.OPENAI_STT_MODEL,
     );
   }
 
@@ -27,7 +27,7 @@ export class GroqProvider implements AIProvider, STTProvider {
       throw new Error("Groq provider is not configured.");
     }
 
-    const model = req.preferFastModel ? this.env.GROQ_MODEL_FAST : this.env.GROQ_MODEL_PRIMARY;
+    const model = req.preferFastModel ? this.env.OPENAI_MODEL_FAST : this.env.OPENAI_MODEL_PRIMARY;
     const startedAt = Date.now();
     console.log("[groq] chat:start", {
       model,
@@ -38,7 +38,7 @@ export class GroqProvider implements AIProvider, STTProvider {
     const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${this.env.GROQ_API_KEY}`,
+        Authorization: `Bearer ${this.env.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -109,13 +109,13 @@ export class GroqProvider implements AIProvider, STTProvider {
     }
 
     const formData = new FormData();
-    formData.append("model", this.env.GROQ_STT_MODEL ?? "");
+    formData.append("model", this.env.OPENAI_STT_MODEL ?? "");
     const audio = Uint8Array.from(req.audio);
     formData.append("file", new Blob([audio]), req.filename);
 
     const response = await fetch("https://api.groq.com/openai/v1/audio/transcriptions", {
       method: "POST",
-      headers: { Authorization: `Bearer ${this.env.GROQ_API_KEY}` },
+      headers: { Authorization: `Bearer ${this.env.OPENAI_API_KEY}` },
       body: formData,
     });
 
